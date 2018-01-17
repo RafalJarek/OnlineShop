@@ -33,7 +33,11 @@ try
           if($connect->query("UPDATE purchase_item SET price=$sum WHERE id_purchase=$id"))  
           {
             $_SESSION['basket_value'] -= $sum1;
-            header('Location: ../view/basket.php#basket_pair_quantity'.$il.'');
+            ?>
+            <script type="text/javascript">
+            window.location.href = 'https://inzynier.000webhostapp.com/view/basket.php';
+            </script>
+            <?php
           }
         }
         else

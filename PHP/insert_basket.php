@@ -1,5 +1,15 @@
 <?php
 session_start();
+if(isset($_SESSION['login']))
+{
+  $login = $_SESSION['login'];
+}
+else
+{
+  $_SESSION['e_basket_already']="Aby dodać produkt do koszyka najpierw się zaloguj";
+  header('Location: ../view/login.php');
+  exit();
+}
 require_once("db.php");
 try
 {
@@ -13,16 +23,6 @@ try
   {
     date_default_timezone_set('Europe/Warsaw');
     $current_date = date('Y-m-d H:i:s');
-    if(isset($_SESSION['login']))
-    {
-      $login = $_SESSION['login'];
-    }
-    else
-    {
-      $_SESSION['e_basket_already']="Aby dodać produkt do koszyka najpierw się zaloguj";
-      header('Location: ../view/login.php');
-      exit();
-    }
 
     if(isset($_POST['quant']))
     {
@@ -43,7 +43,11 @@ try
     if(isset($getid_product))
     {
       $_SESSION['e_basket_already']="Produkt już wcześniej dodany do koszyka";
-      header('Location: ../view/basket.php');
+      ?>
+      <script type="text/javascript">
+      window.location.href = 'https://inzynier.000webhostapp.com/view/basket.php';
+      </script>
+      <?php
       exit();
     }
 
@@ -75,9 +79,13 @@ try
     
     if($amount<$quant)
     {
-      header('Location: ../view/index.php');
       $quant=$amount;
       $_SESSION['e_amount<']="Nie mamy tyle kartonów na stanie";
+      ?>
+      <script type="text/javascript">
+      window.location.href = 'https://inzynier.000webhostapp.com/view/basket.php';
+      </script>
+      <?php
     }
 
     //znajdź id usera dla danego loginu
@@ -116,12 +124,15 @@ try
       if($connect->query("INSERT INTO purchase_item Values ('null', '$id_purchase', '$id_product', '$quant', '$sum')"))  
       {
         $_SESSION['basketsuccess']=true;
-        header('Location: ../view/basket.php');
+        ?>
+        <script type="text/javascript">
+        window.location.href = 'https://inzynier.000webhostapp.com/view/basket.php';
+        </script>
+        <?php
       }
       else
       {
         $connect->query("DELETE FROM purchase WHERE id_purchase= '$id_purchase'");
-        $_SESSION['basketfailed']="dupa";
         throw new Exception($connect->error);
       }
     }

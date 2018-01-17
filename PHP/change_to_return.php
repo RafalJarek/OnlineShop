@@ -39,7 +39,11 @@ try
         {
           if($connect->query("UPDATE purchase as p inner join purchase_item as purit on p.id_purchase=purit.id_purchase SET id_status='7' WHERE purit.id_product='$id_product' and p.order_date= '$date'"))
           {
-            header('Location: ../view/admin.php');
+            ?>
+            <script type="text/javascript">
+            window.location.href = 'https://inzynier.000webhostapp.com/view/admin.php';
+            </script>
+            <?php
           }
           else
           {

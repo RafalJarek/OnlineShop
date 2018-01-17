@@ -15,7 +15,11 @@ try
 
         if($connect->query("DELETE FROM observed WHERE id_product='$id_product'")===true)
         {
-            header("Location: ../view/observed.php");
+          ?>
+          <script type="text/javascript">
+          window.location.href = 'https://inzynier.000webhostapp.com/view/observed.php';
+          </script>
+          <?php
         }
         else
         {

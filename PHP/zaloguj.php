@@ -38,18 +38,30 @@
 
                         unset($_SESSION['errorlogin']);
                         $result->free_result();
-                        header('Location: ../view/index.php');    
+                        ?>
+                        <script type="text/javascript">
+                        window.location.href = 'https://inzynier.000webhostapp.com/view/index.php';
+                        </script>
+                        <?php
                     }
                     else
                     {
                         $_SESSION['errorlogin']= '<span style="color:red">Nieprawidłowy login bądź hasło</span'."<br>";
-                        header('Location: ../view/login.php');   
+                        ?>
+                        <script type="text/javascript">
+                        window.location.href = 'https://inzynier.000webhostapp.com/view/login.php';
+                        </script>
+                        <?php
                     }
                 }
                 else
                 {
                     $_SESSION['errorlogin']= '<span style="color:red">Nieprawidłowy login bądź hasło</span'."<br>";
-                    header('Location: ../view/login.php');   
+                    ?>
+                    <script type="text/javascript">
+                    window.location.href = 'https://inzynier.000webhostapp.com/view/login.php';
+                    </script>
+                    <?php 
                 }
             }
             else

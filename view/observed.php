@@ -17,6 +17,11 @@
 <?php 
 include_once "header.php";
 include_once "menuwrapper.php";
+if(isset($_SESSION['e_observed_already']))
+{
+        echo'<div class="error" style="text-align:center">'.$_SESSION['e_observed_already'].'</div>'.'<br />';
+        unset($_SESSION['e_observed_already']);
+}
 if(!isset($_SESSION['login']))
 {
     echo "<div style='font-weight:bold;text-align:center;margin-top:30px;margin-bottom:30px'>Nie jesteś zalogowany</div>";

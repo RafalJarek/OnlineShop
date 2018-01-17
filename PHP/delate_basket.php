@@ -24,7 +24,11 @@ try
         {
           if($connect->query("DELETE FROM purchase WHERE id_purchase='$id_purchase'")===true)
           {
-              header("Location: ../view/basket.php");
+            ?>
+            <script type="text/javascript">
+            window.location.href = 'https://inzynier.000webhostapp.com/view/basket.php';
+            </script>
+            <?php
           }
           else
           {

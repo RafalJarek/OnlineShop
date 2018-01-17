@@ -63,7 +63,11 @@ try
               if($connect->query("INSERT INTO user Values ('$id', '$login','$email','$haslo_hash','$salt','$id','1')"))
               {
                 $_SESSION['udanarejestracja']=true;
-                header('Location: witaj.php');
+                ?>
+                <script type="text/javascript">
+                window.location.href = 'https://inzynier.000webhostapp.com/view/witaj.php';
+                </script>
+                <?php
               }
               else
               {

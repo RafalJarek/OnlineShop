@@ -47,7 +47,11 @@ try
           throw new Exception($connect->error);
         }
       }
-      header('Location: ../view/admin.php');
+      ?>
+      <script type="text/javascript">
+      window.location.href = 'https://inzynier.000webhostapp.com/view/admin.php';
+      </script>
+      <?php
     }
     else
     {

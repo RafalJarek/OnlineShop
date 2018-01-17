@@ -1,5 +1,19 @@
 <?php
 session_start();
+if(isset($_SESSION['login']))
+{
+  $login = $_SESSION['login'];
+}
+else
+{
+  $_SESSION['e_basket_already']="Aby dodać produkt do koszyka najpierw się zaloguj";
+  ?>
+  <script type="text/javascript">
+  window.location.href = 'https://inzynier.000webhostapp.com/view/login.php';
+  </script>
+  <?php
+  exit();
+}
 require_once("db.php");
 try
     {
@@ -13,16 +27,6 @@ try
       {
         date_default_timezone_set('Europe/Warsaw');
         $current_date = date('Y/m/d');
-        if(isset($_SESSION['login']))
-        {
-          $login = $_SESSION['login'];
-        }
-        else
-        {
-          $_SESSION['e_basket_already']="Aby dodać produkt do koszyka najpierw się zaloguj";
-          header('Location: ../view/login.php');
-          exit();
-        }
         $id_product = $_POST['add_observed'];
         
         $sql = "SELECT id_product from observed where id_product='$id_product'";
@@ -33,7 +37,11 @@ try
         if($getid_product>0)
         {
           $_SESSION['e_observed_already']="Produkt już wcześniej dodany do obserwowanych";
-          header('Location: ../view/index.php');
+          ?>
+          <script type="text/javascript">
+          window.location.href = 'https://inzynier.000webhostapp.com/view/observed.php';
+          </script>
+          <?php
           exit();
         }
 
@@ -46,7 +54,11 @@ try
         if($connect->query("INSERT INTO observed Values ('null', '$id_product', '$id_user', '$current_date')"))
         {
           $_SESSION['observedsuccess']=true;
-          header('Location: ../view/observed.php');
+          ?>
+          <script type="text/javascript">
+          window.location.href = 'https://inzynier.000webhostapp.com/view/observed.php';
+          </script>
+          <?php
         }
         else
         {

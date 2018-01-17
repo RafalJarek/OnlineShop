@@ -56,7 +56,11 @@ try
             $new_quantity[$i]=$amount[$i] + $quantity[$i];
             if($connect->query("UPDATE product SET total_amount='$new_quantity[0]' WHERE id_product='$id_product[0]'"))
            {
-                header('Location: ../view/basket.php');
+            ?>
+            <script type="text/javascript">
+            window.location.href = 'https://inzynier.000webhostapp.com/view/basket.php';
+            </script>
+            <?php
            }
            else
            {

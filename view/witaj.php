@@ -1,5 +1,7 @@
 <?php
 session_start();
+header( "refresh:2;url=login.php" );
+
 
 if(!isset($_SESSION['udanarejestracja']))
 {
@@ -52,10 +54,6 @@ if(isset($_SESSION['e_login_strlen'])) unset($_SESSION['e_login_strlen']);
 
         <p id="info_info">Za chwilkę zostaniesz przeniesiony na stronę główną </p>
 </div>
-
-<?php
-header( "refresh:2;url=login.php" );
-?>
 
 </body>
 </html> 

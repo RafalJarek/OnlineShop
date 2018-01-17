@@ -1,5 +1,6 @@
 <?php
   session_start();
+  header( "refresh:3;url=../view/index.php" );
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -20,7 +21,11 @@ if(isset($_POST['id_kurier']))
 }
 else
 {
-  header("location ../view/to_payment.php");
+  ?>
+  <script type="text/javascript">
+  window.location.href = 'https://inzynier.000webhostapp.com/view/to_payment.php';
+  </script>
+  <?php
   exit();
 }
 unset($_SESSION['basket_value']);
@@ -68,10 +73,6 @@ try
   <div class="header">       
     <p id="to_overview_header">Dziękujemy za dokonanie transakcji, oczekujemy<br> teraz na płatność</p>
   </div>
-
-    <?php
-//header( "refresh:3;url=../view/index.php" );
-?>
 
 <?php include_once "../view/footer.php"?>
 

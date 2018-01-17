@@ -99,6 +99,19 @@ else
                 echo'<div class="error" style="text-align:center"><br>'.$_SESSION['e_amount<'].'</div>';
                 unset($_SESSION['e_amount<']);
             }
+
+        if(isset($_SESSION['e_amount0']))
+            {
+                echo'<div class="error" style="text-align:center">'.$_SESSION['e_amount0'].'</div>'.'<br />';
+                unset($_SESSION['e_amount0']);
+            }
+
+           if(isset($_SESSION['e_amount<']))
+            {
+                echo'<div class="error" style="text-align:center">'.$_SESSION['e_amount<'].'</div>'.'<br />';
+                unset($_SESSION['e_amount<']);
+            }
+
     ?> 
         <div class="basket_container">
         <h1 style="grid-column:2/8">Produkty w koszyku</h1>     

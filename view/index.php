@@ -43,25 +43,6 @@ try
 <body>
 
 <?php 
-
-if(isset($_SESSION['e_observed_already']))
-{
-        echo'<div class="error" style="text-align:center">'.$_SESSION['e_observed_already'].'</div>'.'<br />';
-        unset($_SESSION['e_observed_already']);
-}
-
-if(isset($_SESSION['e_amount0']))
-{
-        echo'<div class="error" style="text-align:center">'.$_SESSION['e_amount0'].'</div>'.'<br />';
-        unset($_SESSION['e_amount0']);
-}
-
-if(isset($_SESSION['e_amount<']))
-{
-        echo'<div class="error" style="text-align:center">'.$_SESSION['e_amount<'].'</div>'.'<br />';
-        unset($_SESSION['e_amount<']);
-}
-
 include_once "header.php";
 unset($_SESSION['category'])?>
 
